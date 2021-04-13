@@ -1,5 +1,6 @@
 body{
     background-color: #f3f3f3;
+    font-family: 'Roboto', sans-serif;
 }
 
 .topo{
@@ -24,6 +25,15 @@ body{
 .topo ion-icon {
     font-size: 45px;
     margin-right: 22px;
+}
+
+.mensagens{
+    margin-top: 104px;
+}
+
+.mensagem{
+    
+    padding: 8px 10px; 
 }
 
 .base{
