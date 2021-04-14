@@ -32,8 +32,8 @@ body{
 }
 
 .mensagem{
-    
-    padding: 8px 10px; 
+    margin-bottom: 4px;
+    padding: 10px 10px; 
 }
 
 .base{
@@ -48,11 +48,33 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+
 .base input{
+    font-size: 18px;
     margin-left: 22px;
+    font-style: italic;
+    text-align: start;
+    border: none;
+    outline: none;
+}
+
+::placeholder{
+    color: black;
 }
 
 .base ion-icon{
     font-size: 26px;
     margin-right:22px ;
+}
+
+.entrar{
+    background-color:rgba(220, 220, 220, 1);
+}
+
+.todos{
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.reservado{
+    background-color: rgba(255, 222, 222, 1);
 }
