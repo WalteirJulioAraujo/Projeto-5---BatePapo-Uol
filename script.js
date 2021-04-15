@@ -3,7 +3,7 @@
 //Variaveis globais
 let nomeChat="";
 let nomeChatDados="";
-// - - - - - -  - - - -  -
+// - - - - - - - - - - - 
 
 enviarNome();
 // Ao entrar na sala, pergunto o nome e envio pro servidor
