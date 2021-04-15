@@ -83,6 +83,7 @@ setInterval(pegaMensagensServidor,3000);
 // Enviar mensagem
 
 function enviarMensagem(){
+    const mensagemInput =  document.querySelector(".base input");
     let mensagemEnviar = document.querySelector(".base input").value;
     console.log(mensagemEnviar);
     mensagemEnviar = {
@@ -92,4 +93,14 @@ function enviarMensagem(){
         type: "message"
     }
     const requisicaoEnviarMensagem = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages',mensagemEnviar);
+    mensagemInput.value="";
 }
+
+// Configurando mandar msg no input com o enter
+const input = document.getElementById("inputMsg");
+input.addEventListener("keypress",function(event){
+    if(event.keyCode === 13){
+        event.preventDefault();
+        document.getElementById("iconeEnviarMsg").click()
+    }
+});
