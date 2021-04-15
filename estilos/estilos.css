@@ -30,7 +30,7 @@ body{
 .mensagens{
     margin-top: 104px;
     margin-bottom: 90px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .mensagem{

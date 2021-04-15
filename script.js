@@ -76,6 +76,8 @@ function renderizarMensagens(resposta){
         }
     }
     console.log("estou atualizando");
+    // rolagem automatica
+    window.scrollTo(0,document.body.scrollHeight);
 }
 
 setInterval(pegaMensagensServidor,3000);
@@ -94,7 +96,11 @@ function enviarMensagem(){
     }
     const requisicaoEnviarMensagem = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages',mensagemEnviar);
     mensagemInput.value="";
+    requisicaoEnviarMensagem.catch(atualizarPagina)
 }
+
+// Funçao que atualiza a pagina
+
 
 // Configurando mandar msg no input com o enter
 const input = document.getElementById("inputMsg");
