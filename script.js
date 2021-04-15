@@ -2,14 +2,15 @@
 
 //Variaveis globais
 let nomeChat="";
+let nomeChatDados="";
 // - - - - - -  - - - -  -
 
 enviarNome();
 // Ao entrar na sala, pergunto o nome e envio pro servidor
 function enviarNome() {
     nomeChat = prompt("Qual seu nome?");
-    nomeChat = { name: nomeChat };
-    const requisicaoEnviar = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants', nomeChat);
+    nomeChatDados = { name: nomeChat };
+    const requisicaoEnviar = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants', nomeChatDados);
     requisicaoEnviar.then(exitoLogar);
     requisicaoEnviar.catch(erroLogar);
 }
@@ -28,7 +29,7 @@ function erroLogar(erro) {
 // Envia o nome do meu usuario, ja criado, para o servidor manter a conexão
 function manterConexao(){
     console.log("continua logado");
-    const requisicaoEnviar = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/status', nomeChat);
+    const requisicaoEnviar = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/status', nomeChatDados);
 }
 //Enviando a cada 5 segundos para manter conectado
 setInterval(manterConexao,5000);
@@ -78,3 +79,17 @@ function renderizarMensagens(resposta){
 }
 
 setInterval(pegaMensagensServidor,3000);
+
+// Enviar mensagem
+
+function enviarMensagem(){
+    let mensagemEnviar = document.querySelector(".base input").value;
+    console.log(mensagemEnviar);
+    mensagemEnviar = {
+        from: nomeChat,
+        to: "Todos",
+        text: mensagemEnviar,
+        type: "message"
+    }
+    const requisicaoEnviarMensagem = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages',mensagemEnviar);
+}
