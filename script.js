@@ -65,7 +65,7 @@ function renderizarMensagens(resposta){
                 ${resposta.data[i].text}
             </div>
             `;
-        }else if(resposta.data[i].type= "private_message"){ // Lembrar de tratar melhor esse caso
+        }else if(resposta.data[i].type= "private_message"){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
             mensagens.innerHTML += `
             <div class="mensagem privado">(${resposta.data[i].time})  
                 <b>${resposta.data[i].from}</b> para 
