@@ -36,10 +36,8 @@ setInterval(manterConexao,5000);
 
 // Pega sa msgs do servidor
 function pegaMensagensServidor() {
-
-const requisicaoPegar = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages');
-requisicaoPegar.then(renderizarMensagens);
-
+    const requisicaoPegar = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages');
+    requisicaoPegar.then(renderizarMensagens);
 }
 // Renderizando as msgs do servidor
 function renderizarMensagens(resposta){
@@ -95,6 +93,7 @@ function enviarMensagem(){
         type: "message"
     }
     const requisicaoEnviarMensagem = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages',mensagemEnviar);
+    pegaMensagensServidor(); //atualizando a pagina
     mensagemInput.value="";
     requisicaoEnviarMensagem.catch(atualizarPagina)
 }
