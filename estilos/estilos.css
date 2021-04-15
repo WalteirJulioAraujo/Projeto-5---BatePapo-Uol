@@ -82,3 +82,7 @@ body{
 .cinzaTempo{
     color: #aaa;
 }
+
+.quebrarPalavra{
+    word-break:break-all;
+}

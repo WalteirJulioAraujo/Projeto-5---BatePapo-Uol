@@ -50,24 +50,24 @@ function renderizarMensagens(resposta){
         if(resposta.data[i].type === "message"){
             mensagens.innerHTML += `
             <div class="mensagem"><span class="cinzaTempo">(${resposta.data[i].time})</span>  
-                <b>${resposta.data[i].from}</b> para 
-                <b>${resposta.data[i].to}</b>:  
+                <span class="quebrarPalavra"><b>${resposta.data[i].from}</b></span> para 
+                <span class="quebrarPalavra"><b>${resposta.data[i].to}</b></span>:  
                 ${resposta.data[i].text}
             </div>
             `;
         }else if(resposta.data[i].type === "status"){
             mensagens.innerHTML += `
             <div class="mensagem status"><span class="cinzaTempo">(${resposta.data[i].time})</span>  
-                <b>${resposta.data[i].from}</b> para 
-                <b>${resposta.data[i].to}</b>:  
+                <span class="quebrarPalavra"><b>${resposta.data[i].from}</b></span> para 
+                <span class="quebrarPalavra"><b>${resposta.data[i].to}</b></span>:
                 ${resposta.data[i].text}
             </div>
             `;
         }else if(resposta.data[i].type= "private_message"){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
             mensagens.innerHTML += `
             <div class="mensagem privado"><span class="cinzaTempo">(${resposta.data[i].time})</span> 
-                <b>${resposta.data[i].from}</b> para 
-                <b>${resposta.data[i].to}</b>:  
+                <span class="quebrarPalavra"><b>${resposta.data[i].from}</b></span> para 
+                <span class="quebrarPalavra"><b>${resposta.data[i].to}</b></span>:  
                 ${resposta.data[i].text}
             </div>
             `;
