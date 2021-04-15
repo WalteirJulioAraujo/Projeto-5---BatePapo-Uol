@@ -29,11 +29,13 @@ body{
 
 .mensagens{
     margin-top: 104px;
+    margin-bottom: 90px;
 }
 
 .mensagem{
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     padding: 10px 10px; 
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .base{
@@ -67,14 +69,10 @@ body{
     margin-right:22px ;
 }
 
-.entrar{
+.status{
     background-color:rgba(220, 220, 220, 1);
 }
 
-.todos{
-    background-color: rgba(255, 255, 255, 1);
-}
-
-.reservado{
+.privado{
     background-color: rgba(255, 222, 222, 1);
 }
