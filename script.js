@@ -100,7 +100,9 @@ function enviarMensagem(){
 }
 
 // Funçao que atualiza a pagina
-
+function atualizarPagina(){
+    location.reload() 
+}
 
 // Configurando mandar msg no input com o enter
 const input = document.getElementById("inputMsg");
