@@ -49,7 +49,7 @@ function renderizarMensagens(resposta){
     for(let i = 0;i<resposta.data.length;i++){
         if(resposta.data[i].type === "message"){
             mensagens.innerHTML += `
-            <div class="mensagem">(${resposta.data[i].time})  
+            <div class="mensagem"><span class="cinzaTempo">(${resposta.data[i].time})</span>  
                 <b>${resposta.data[i].from}</b> para 
                 <b>${resposta.data[i].to}</b>:  
                 ${resposta.data[i].text}
@@ -57,7 +57,7 @@ function renderizarMensagens(resposta){
             `;
         }else if(resposta.data[i].type === "status"){
             mensagens.innerHTML += `
-            <div class="mensagem status">(${resposta.data[i].time})  
+            <div class="mensagem status"><span class="cinzaTempo">(${resposta.data[i].time})</span>  
                 <b>${resposta.data[i].from}</b> para 
                 <b>${resposta.data[i].to}</b>:  
                 ${resposta.data[i].text}
@@ -65,7 +65,7 @@ function renderizarMensagens(resposta){
             `;
         }else if(resposta.data[i].type= "private_message"){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
             mensagens.innerHTML += `
-            <div class="mensagem privado">(${resposta.data[i].time})  
+            <div class="mensagem privado"><span class="cinzaTempo">(${resposta.data[i].time})</span> 
                 <b>${resposta.data[i].from}</b> para 
                 <b>${resposta.data[i].to}</b>:  
                 ${resposta.data[i].text}
@@ -83,6 +83,7 @@ setInterval(pegaMensagensServidor,3000);
 // Enviar mensagem
 
 function enviarMensagem(){
+    pegaMensagensServidor(); //atualizando a pagina
     const mensagemInput =  document.querySelector(".base input");
     let mensagemEnviar = document.querySelector(".base input").value;
     console.log(mensagemEnviar);
