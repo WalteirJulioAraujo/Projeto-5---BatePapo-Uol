@@ -124,6 +124,10 @@ body{
     color: rgba(215, 215, 215, 1);
 }
 
+.telaEntrada input:focus{
+    outline: none;
+}
+
 .telaEntrada button{
     margin-top: 15px;
     background-color: #e7e7e7;
@@ -138,3 +142,10 @@ body{
     display: none;
     margin-top: 68px;
 }
+
+#botaoEntrada:hover,#iconeEnviarMsg:hover{
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+
