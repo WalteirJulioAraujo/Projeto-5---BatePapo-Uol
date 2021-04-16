@@ -11,13 +11,6 @@ function telaEntrada(){
 }
 
 
-function tiraChatTela(){
-    document.getElementById("telaEntrada").style.display="flex";
-    document.querySelector(".topo").style.display="none";
-    document.querySelector(".mensagens").style.display="none";
-    document.querySelector(".base").style.display="none";
-}
-
 function colocaChatTela(){
 
     document.getElementById("telaEntrada").style.display="none";
@@ -58,12 +51,10 @@ function erroLogar(erro) {
 
 
 function manterConexao(){
-    console.log("continua logado");
     const requisicaoEnviar = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/status', nomeChatDados);
 }
 
 function pegaMensagensServidor() {
-    console.log("pegando mensagens");
     const requisicaoPegar = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages');
     requisicaoPegar.then(renderizarMensagens);
 }
@@ -101,7 +92,6 @@ function renderizarMensagens(resposta){
             `;
         }
     }
-    console.log("estou atualizando");
     
     window.scrollTo(0,document.body.scrollHeight);
 }
@@ -113,14 +103,13 @@ function enviarMensagem(){
     
     const checkPartipante = document.querySelector(".participantes .iconeMarcado");
     const nomeParticipante = checkPartipante.parentNode.querySelector("span").innerHTML;
-    console.log(nomeParticipante)
 
     const checkVisibilidade = document.querySelector(".visibilidade .iconeMarcado");
     const tipoVisibilidade = checkVisibilidade.parentNode.querySelector("span").innerHTML;
     
     const mensagemInput =  document.querySelector(".base input");
     let mensagemEnviar = document.querySelector(".base input").value;
-    console.log(nomeParticipante)
+    
     if(mensagemEnviar===""){return;};
 
     if(tipoVisibilidade==="Público"){
@@ -141,11 +130,12 @@ function enviarMensagem(){
     const requisicaoEnviarMensagem = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages',mensagemEnviar);
     pegaMensagensServidor();
     mensagemInput.value="";
-    requisicaoEnviarMensagem.catch(atualizarPagina)
+    requisicaoEnviarMensagem.catch(atualizarPagina);
 }
 
 
 function atualizarPagina(resposta){
+    alert("Usuario Offline");
     location.reload() 
 }
 
@@ -161,7 +151,7 @@ const inputEntrada = document.getElementById("inputEntrada");
 inputEntrada.addEventListener("keypress",function(event){
     if(event.keyCode === 13){
         event.preventDefault();
-        document.getElementById("botaoEntrada").click()
+        document.getElementById("botaoEntrada").click();
     }
 });
 

@@ -82,6 +82,7 @@ body{
 .base p{
     margin-left: 22px;
     color: #686666;
+    margin-top: 10px;
 }
 
 .status{
