@@ -176,7 +176,7 @@ function abrirMenuLateral(){
     document.querySelector(".participantes").innerHTML = "";
 
     procuraParticipantes();
-    
+
     let a = document.getElementById("divMenuLateral").style.display;
     if(a==="none"){
         document.getElementById("divMenuLateral").style.display = "flex";
@@ -191,18 +191,39 @@ function voltarChat(){
 
 // Functions popular meu menu com os participantes
 function procuraParticipantes(){
+    document.querySelector(".participantes").innerHTML = "";
     const requisicaoParticipantes = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants");
     requisicaoParticipantes.then(popularParticipantes);
 }
 
 function popularParticipantes(respota){
+    document.querySelector(".participantes").innerHTML = `
+    <div class="opcaoMenuLateral" onclick="selecionarEnvio(this)">
+        <div>
+            <ion-icon name="people" class="icone"></ion-icon>
+            <span>Todos</span>
+        </div>
+        <ion-icon name="checkmark-sharp" class="iconeCheck iconeMarcado"></ion-icon>
+    </div>`;
+
     let participantes = document.querySelector(".participantes");
 
     for(let i = 0;i<respota.data.length;i++){
         participantes.innerHTML += `
-        <div class="opcaoMenuLateral">
-            <ion-icon name="people"></ion-icon>
-            <span>${respota.data[i].name}</span>
+        <div class="opcaoMenuLateral" onclick="selecionarEnvio(this)">
+            <div>
+                <ion-icon name="people" class="icone"></ion-icon>
+                <span>${respota.data[i].name}</span>
+            </div>
+            <ion-icon name="checkmark-sharp" class="iconeCheck"></ion-icon>
         </div>`;
     }
+}
+
+function selecionarEnvio(elemento){
+    const pai = elemento.parentNode;
+    const procurarCheck = pai.querySelector(".iconeMarcado");
+    procurarCheck.classList.remove('iconeMarcado');
+    const divIcone = elemento.querySelector(".iconeCheck");
+    divIcone.classList.add('iconeMarcado');
 }

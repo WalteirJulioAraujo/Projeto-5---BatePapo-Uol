@@ -177,10 +177,9 @@ body{
     font-size: 16px;
 }
 
-.menuLateral ion-icon{
+.menuLateral .icone{
     font-size:24px;
-    margin-right: 10px;
-    margin-left: 15px;
+    
 }
 
 .tituloMenuLateral{
@@ -195,6 +194,7 @@ body{
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .visibilidadeMensagem{
@@ -204,3 +204,13 @@ body{
     padding-top: 20px;
 }
 
+.iconeCheck{
+    font-size:21px;
+    margin-right: 30px;
+    color: #28BB25;
+    display: none;
+}
+
+.iconeMarcado{
+    display: block;
+}
