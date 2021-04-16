@@ -28,6 +28,11 @@ body{
     margin-right: 22px;
 }
 
+.topo ion-icon:hover{
+    color: #2b2a2a;
+    cursor: pointer;
+}
+
 .mensagens{
     margin-top: 104px;
     margin-bottom: 90px;
@@ -195,6 +200,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 5px;
+}
+
+.opcaoMenuLateral:hover{
+    cursor: pointer;
+    background-color: #c4bcbc;
 }
 
 .visibilidadeMensagem{

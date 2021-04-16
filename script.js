@@ -108,7 +108,7 @@ function renderizarMensagens(resposta){
                 ${resposta.data[i].text}
             </div>
             `;
-        }else if((resposta.data[i].type === "private_message") && (nomeChat === resposta.data[i].to) ){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
+        }else if((resposta.data[i].type === "private_message") && ((nomeChat === resposta.data[i].to) || (resposta.data[i].to === "Todos"))){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
             mensagens.innerHTML += `
             <div class="mensagem privado"><span class="cinzaTempo">(${resposta.data[i].time})</span> 
                 <span class="quebrarPalavra"><b>${resposta.data[i].from}</b></span> reservadamente para 
@@ -142,7 +142,7 @@ function enviarMensagem(){
     
     const mensagemInput =  document.querySelector(".base input");
     let mensagemEnviar = document.querySelector(".base input").value;
-
+    console.log(nomeParticipante)
     if(mensagemEnviar===""){return;};
 
     if(tipoVisibilidade==="Público"){
@@ -213,7 +213,7 @@ function voltarChat(){
 
 // Functions popular meu menu com os participantes
 function procuraParticipantes(){
-    //document.querySelector(".participantes").innerHTML = "";
+    document.querySelector(".participantes").innerHTML = "";
     const requisicaoParticipantes = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants");
     requisicaoParticipantes.then(popularParticipantes);
 }
