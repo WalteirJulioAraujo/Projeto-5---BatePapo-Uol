@@ -40,14 +40,27 @@
             <div class="participantes"></div>
 
             <div class="visibilidadeMensagem"><span><b>Escolha a visibilidade:</b></span></div>
-            <div class="opcaoMenuLateral publico">
-                <ion-icon name="lock-open" class="icone"></ion-icon>
-                <span>Público</span>
+
+            <div class="visibilidade">
+
+                <div class="opcaoMenuLateral publico" onclick="selecionarEnvio(this)">
+                    <div>
+                        <ion-icon name="lock-open" class="icone"></ion-icon>
+                        <span>Público</span>
+                    </div>
+                    <ion-icon name="checkmark-sharp" class="iconeCheck iconeMarcado"></ion-icon>
+                </div>
+
+                <div class="opcaoMenuLateral reservadamente" onclick="selecionarEnvio(this)">
+                    <div>
+                        <ion-icon name="lock-open" class="icone"></ion-icon>
+                        <span>Reservadamente</span>
+                    </div>
+                    <ion-icon name="checkmark-sharp" class="iconeCheck"></ion-icon>
+                </div>
+
             </div>
-            <div class="opcaoMenuLateral reservadamente">
-                <ion-icon name="lock-open" class="icone"></ion-icon>
-                <span>Reservadamente</span>
-            </div>
+
         </div>
     </div>
 
