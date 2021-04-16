@@ -51,6 +51,7 @@ function enviarNome(nomeChat) {
 function exitoLogar(resposta) {
     colocaChatTela();
     pegaMensagensServidor();
+    procuraParticipantes();
     setInterval(manterConexao,5000);
     setInterval(pegaMensagensServidor,3000);
 }
@@ -109,7 +110,7 @@ function renderizarMensagens(resposta){
         }else if(resposta.data[i].type= "private_message"){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
             mensagens.innerHTML += `
             <div class="mensagem privado"><span class="cinzaTempo">(${resposta.data[i].time})</span> 
-                <span class="quebrarPalavra"><b>${resposta.data[i].from}</b></span> para 
+                <span class="quebrarPalavra"><b>${resposta.data[i].from}</b></span> reservadamente para 
                 <span class="quebrarPalavra"><b>${resposta.data[i].to}</b></span>:  
                 ${resposta.data[i].text}
             </div>
@@ -129,14 +130,34 @@ function renderizarMensagens(resposta){
 
 function enviarMensagem(){
     pegaMensagensServidor(); //atualizando a pagina
+
+    //localizando meus checks
+    const checkPartipante = document.querySelector(".participantes .iconeMarcado");
+    const nomeParticipante = checkPartipante.parentNode.querySelector("span").innerHTML;
+    
+
+    const checkVisibilidade = document.querySelector(".visibilidade .iconeMarcado");
+    const tipoVisibilidade = checkVisibilidade.parentNode.querySelector("span").innerHTML;
+    
     const mensagemInput =  document.querySelector(".base input");
     let mensagemEnviar = document.querySelector(".base input").value;
+
     if(mensagemEnviar===""){return;};
-    mensagemEnviar = {
-        from: nomeChat,
-        to: "Todos",
-        text: mensagemEnviar,
-        type: "message"
+
+    if(tipoVisibilidade==="Público"){
+        mensagemEnviar = {
+            from: nomeChat,
+            to: nomeParticipante,
+            text: mensagemEnviar,
+            type: "message"
+        }
+    } else {
+        mensagemEnviar = {
+            from: nomeChat,
+            to: nomeParticipante,
+            text: mensagemEnviar,
+            type: "private_message"
+        }
     }
     const requisicaoEnviarMensagem = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages',mensagemEnviar);
     pegaMensagensServidor(); //atualizando a pagina
