@@ -15,7 +15,7 @@
 <body>
     <div class="topo">
         <img src="Imagens/Logotopo.png" alt="Logo">
-        <ion-icon name="people"></ion-icon>
+        <ion-icon name="people" onclick="abrirMenuLateral()"></ion-icon>
     </div>
 
     <div class="mensagens" id="mensagens"></div>
@@ -30,6 +30,29 @@
         <input type="text" placeholder="Digite seu nome" id="inputEntrada">
         <img src="Imagens/Spinner-1.6s-204px.svg" id="imagemCarregando">
         <button onclick="telaEntrada()" id="botaoEntrada">Entrar</button>
+    </div>
+
+    <div class="escolhaContato" id="divMenuLateral">
+        <div class="transparente" onclick="voltarChat()"></div>
+        <div class="menuLateral">
+            <div class="tituloMenuLateral"><span><b>Escolha um contato<br>para enviar mensagem:</b></span></div>
+            <div class="opcaoMenuLateral">
+                <ion-icon name="people"></ion-icon>
+                <span>Todos</span>
+            </div>
+
+            <div class="participantes"></div>
+
+            <div class="visibilidadeMensagem"><span><b>Escolha a visibilidade:</b></span></div>
+            <div class="opcaoMenuLateral publico">
+                <ion-icon name="lock-open"></ion-icon>
+                <span>Público</span>
+            </div>
+            <div class="opcaoMenuLateral reservadamente">
+                <ion-icon name="lock-open"></ion-icon>
+                <span>Reservadamente</span>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

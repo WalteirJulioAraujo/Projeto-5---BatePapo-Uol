@@ -167,3 +167,42 @@ inputEntrada.addEventListener("keypress",function(event){
         document.getElementById("botaoEntrada").click()
     }
 });
+
+
+
+//Configurando o menu lateral
+function abrirMenuLateral(){
+    //quando eu abrir o menu lateral vou procurar qm ta on
+    document.querySelector(".participantes").innerHTML = "";
+
+    procuraParticipantes();
+    
+    let a = document.getElementById("divMenuLateral").style.display;
+    if(a==="none"){
+        document.getElementById("divMenuLateral").style.display = "flex";
+    } else {
+        document.getElementById("divMenuLateral").style.display = "none";
+    }
+}
+
+function voltarChat(){
+    document.getElementById("divMenuLateral").style.display = "none";
+}
+
+// Functions popular meu menu com os participantes
+function procuraParticipantes(){
+    const requisicaoParticipantes = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants");
+    requisicaoParticipantes.then(popularParticipantes);
+}
+
+function popularParticipantes(respota){
+    let participantes = document.querySelector(".participantes");
+
+    for(let i = 0;i<respota.data.length;i++){
+        participantes.innerHTML += `
+        <div class="opcaoMenuLateral">
+            <ion-icon name="people"></ion-icon>
+            <span>${respota.data[i].name}</span>
+        </div>`;
+    }
+}
