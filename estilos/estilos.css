@@ -14,6 +14,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    display: none;
 }
 
 .topo img{
@@ -31,6 +32,7 @@ body{
     margin-top: 104px;
     margin-bottom: 90px;
     overflow-y: auto;
+    display: none;
 }
 
 .mensagem{
@@ -50,6 +52,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    display: none;
 }
 
 .base input{
@@ -85,4 +88,48 @@ body{
 
 .quebrarPalavra{
     word-break:break-all;
+}
+
+
+/* fazendo as classes para a pagina de entrada */
+.esconder{
+    display: none;
+}
+
+.telaEntrada{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.telaEntrada img{
+    width: 130px;
+}
+
+.telaEntrada input{
+    margin-top: 75px;
+    text-align: center;
+    width: 261px;
+    height: 54px;
+    border: 1px solid rgba(215, 215, 215, 1);
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.telaEntrada input::placeholder{
+    color: rgba(215, 215, 215, 1);
+}
+
+.telaEntrada button{
+    margin-top: 15px;
+    background-color: #e7e7e7;
+    border: none;
+    border-radius: 8px;
+    color: #696969;
+    padding: 15px 32px;
+    text-align: center;
 }

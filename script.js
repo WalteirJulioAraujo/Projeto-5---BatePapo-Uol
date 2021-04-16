@@ -5,10 +5,38 @@ let nomeChat="";
 let nomeChatDados="";
 // - - - - - - - - - - - 
 
-enviarNome();
+function telaEntrada(){
+    nomeChat = document.getElementById('inputEntrada').value;
+    enviarNome(nomeChat);
+}
+
+// Funções que tira e colocam os elementos do chat da tela
+
+function tiraChatTela(){
+    document.getElementById("telaEntrada").style.display="flex";
+    document.querySelector(".topo").style.display="none";
+    document.querySelector(".mensagens").style.display="none";
+    document.querySelector(".base").style.display="none";
+}
+
+function colocaChatTela(){
+    //const divTopo = document.querySelector(".topo");
+    //divTopo.classList.remove("esconder");
+    //const divMensagens = document.querySelector(".mensagens");
+    //divMensagens.classList.remove("esconder");
+    //const divBase = document.querySelector(".base");
+    //divBase.classList.remove("esconder");
+    document.getElementById("telaEntrada").style.display="none";
+    document.querySelector(".topo").style.display="flex";
+    document.querySelector(".mensagens").style.display="block";
+    document.querySelector(".base").style.display="flex";
+}
+
+//enviarNome();
+
 // Ao entrar na sala, pergunto o nome e envio pro servidor
-function enviarNome() {
-    nomeChat = prompt("Qual seu nome?");
+function enviarNome(nomeChat) {
+    //nomeChat = prompt("Qual seu nome?");
     nomeChatDados = { name: nomeChat };
     const requisicaoEnviar = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants', nomeChatDados);
     requisicaoEnviar.then(exitoLogar);
@@ -19,11 +47,17 @@ function enviarNome() {
 
 function exitoLogar(resposta) {
     alert("conseguiu entrar");
+    colocaChatTela();
     pegaMensagensServidor();
+    setInterval(manterConexao,5000);
+    setInterval(pegaMensagensServidor,3000);
 }
 
+
 function erroLogar(erro) {
-    enviarNome();
+    //enviarNome(nomeChat);
+    //tiraChatTela();
+    alert("usuario ja existe");
 }
 
 // Envia o nome do meu usuario, ja criado, para o servidor manter a conexão
@@ -32,10 +66,14 @@ function manterConexao(){
     const requisicaoEnviar = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/status', nomeChatDados);
 }
 //Enviando a cada 5 segundos para manter conectado
-setInterval(manterConexao,5000);
+//setInterval(manterConexao,5000);
+
+
+//setInterval(manterConexao,5000);
 
 // Pega sa msgs do servidor
 function pegaMensagensServidor() {
+    console.log("pegando mensagens");
     const requisicaoPegar = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages');
     requisicaoPegar.then(renderizarMensagens);
 }
@@ -78,7 +116,9 @@ function renderizarMensagens(resposta){
     window.scrollTo(0,document.body.scrollHeight);
 }
 
-setInterval(pegaMensagensServidor,3000);
+//setInterval(pegaMensagensServidor,3000);
+
+ //setInterval(pegaMensagensServidor,3000);
 
 // Enviar mensagem
 
@@ -86,7 +126,7 @@ function enviarMensagem(){
     pegaMensagensServidor(); //atualizando a pagina
     const mensagemInput =  document.querySelector(".base input");
     let mensagemEnviar = document.querySelector(".base input").value;
-    console.log(mensagemEnviar);
+    if(mensagemEnviar===""){return;};
     mensagemEnviar = {
         from: nomeChat,
         to: "Todos",
@@ -100,7 +140,7 @@ function enviarMensagem(){
 }
 
 // Funçao que atualiza a pagina
-function atualizarPagina(){
+function atualizarPagina(resposta){
     location.reload() 
 }
 
@@ -110,5 +150,15 @@ input.addEventListener("keypress",function(event){
     if(event.keyCode === 13){
         event.preventDefault();
         document.getElementById("iconeEnviarMsg").click()
+    }
+});
+
+// Configurando manda msg no input da entrada com enter
+
+const inputEntrada = document.getElementById("inputEntrada");
+inputEntrada.addEventListener("keypress",function(event){
+    if(event.keyCode === 13){
+        event.preventDefault();
+        document.getElementById("botaoEntrada").click()
     }
 });
