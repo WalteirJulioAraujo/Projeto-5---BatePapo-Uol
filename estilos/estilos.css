@@ -28,7 +28,7 @@ body{
     margin-right: 22px;
 }
 
-.topo ion-icon:hover{
+.topo ion-icon:hover,.topo img:hover{
     color: #2b2a2a;
     cursor: pointer;
 }
