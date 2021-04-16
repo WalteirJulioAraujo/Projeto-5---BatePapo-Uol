@@ -101,17 +101,17 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #fff;
 }
 
 .telaEntrada img{
     width: 130px;
+    margin-top: 72px;
 }
 
 .telaEntrada input{
-    margin-top: 75px;
+    margin-top: 94px;
     text-align: center;
     width: 261px;
     height: 54px;
@@ -132,4 +132,9 @@ body{
     color: #696969;
     padding: 15px 32px;
     text-align: center;
+}
+
+#imagemCarregando{
+    display: none;
+    margin-top: 68px;
 }

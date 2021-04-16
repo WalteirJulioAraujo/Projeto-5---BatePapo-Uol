@@ -8,6 +8,9 @@ let nomeChatDados="";
 function telaEntrada(){
     nomeChat = document.getElementById('inputEntrada').value;
     enviarNome(nomeChat);
+    document.getElementById("imagemCarregando").style.display="block";
+    document.getElementById("inputEntrada").style.display="none";
+    document.getElementById("botaoEntrada").style.display="none";
 }
 
 // Funções que tira e colocam os elementos do chat da tela
@@ -57,7 +60,10 @@ function exitoLogar(resposta) {
 function erroLogar(erro) {
     //enviarNome(nomeChat);
     //tiraChatTela();
-    alert("usuario ja existe");
+    document.getElementById("inputEntrada").style.display="initial";
+    document.getElementById("botaoEntrada").style.display="initial"
+    document.getElementById("imagemCarregando").style.display="none";
+    alert("Usuário já existe");
 }
 
 // Envia o nome do meu usuario, ja criado, para o servidor manter a conexão
