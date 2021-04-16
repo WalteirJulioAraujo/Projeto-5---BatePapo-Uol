@@ -52,7 +52,7 @@ function exitoLogar(resposta) {
     colocaChatTela();
     pegaMensagensServidor();
     procuraParticipantes();
-    setInterval(procuraParticipantes,10000);
+    setInterval(procuraParticipantes,15000);
     setInterval(manterConexao,5000);
     setInterval(pegaMensagensServidor,3000);
 }
@@ -108,7 +108,7 @@ function renderizarMensagens(resposta){
                 ${resposta.data[i].text}
             </div>
             `;
-        }else if((resposta.data[i].type === "private_message") && ((nomeChat === resposta.data[i].to) || (resposta.data[i].to === "Todos"))){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
+        }else if((resposta.data[i].type === "private_message") && ((nomeChat === resposta.data[i].to) || (resposta.data[i].to === "Todos") || (resposta.data[i].from === nomeChat) )){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
             mensagens.innerHTML += `
             <div class="mensagem privado"><span class="cinzaTempo">(${resposta.data[i].time})</span> 
                 <span class="quebrarPalavra"><b>${resposta.data[i].from}</b></span> reservadamente para 
@@ -248,4 +248,13 @@ function selecionarEnvio(elemento){
     procurarCheck.classList.remove('iconeMarcado');
     const divIcone = elemento.querySelector(".iconeCheck");
     divIcone.classList.add('iconeMarcado');
+}
+
+//Saidno da pagina
+
+function sairPagina(){
+    let confirmar = confirm("Deseja sair?");
+    if(confirmar){
+        window.close()
+    }
 }
