@@ -55,6 +55,7 @@ function exitoLogar(resposta) {
     setInterval(procuraParticipantes,15000);
     setInterval(manterConexao,5000);
     setInterval(pegaMensagensServidor,3000);
+    setInterval(mensagemPara,1000);
 }
 
 
@@ -257,4 +258,14 @@ function sairPagina(){
     if(confirmar){
         window.close()
     }
+}
+
+function mensagemPara(){
+    const procurarCheckParticipantes = document.querySelector(".participantes .iconeMarcado"); 
+    const checkPartipante = procurarCheckParticipantes.parentNode.querySelector("span").innerHTML;
+
+    const procurarCheckVisibilidade = document.querySelector(".visibilidade .iconeMarcado"); 
+    const checkVisibilidade = procurarCheckVisibilidade.parentNode.querySelector("span").innerHTML;
+
+    document.querySelector(".base p").innerHTML = `Enviando para ${checkPartipante} (${checkVisibilidade})`;
 }

@@ -67,7 +67,7 @@ body{
     text-align: start;
     border: none;
     outline: none;
-    width:60%;
+    width:40vw;
 }
 
 ::placeholder{
@@ -77,6 +77,11 @@ body{
 .base ion-icon{
     font-size: 26px;
     margin-right:22px ;
+}
+
+.base p{
+    margin-left: 22px;
+    color: #686666;
 }
 
 .status{
