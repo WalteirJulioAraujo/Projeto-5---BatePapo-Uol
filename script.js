@@ -52,6 +52,7 @@ function exitoLogar(resposta) {
     colocaChatTela();
     pegaMensagensServidor();
     procuraParticipantes();
+    setInterval(procuraParticipantes,10000);
     setInterval(manterConexao,5000);
     setInterval(pegaMensagensServidor,3000);
 }
@@ -107,7 +108,7 @@ function renderizarMensagens(resposta){
                 ${resposta.data[i].text}
             </div>
             `;
-        }else if(resposta.data[i].type= "private_message"){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
+        }else if((resposta.data[i].type === "private_message") && (nomeChat === resposta.data[i].to) ){ // Lembrar de tratar melhor esse caso, o name que enviou = name do usuario
             mensagens.innerHTML += `
             <div class="mensagem privado"><span class="cinzaTempo">(${resposta.data[i].time})</span> 
                 <span class="quebrarPalavra"><b>${resposta.data[i].from}</b></span> reservadamente para 
@@ -134,7 +135,7 @@ function enviarMensagem(){
     //localizando meus checks
     const checkPartipante = document.querySelector(".participantes .iconeMarcado");
     const nomeParticipante = checkPartipante.parentNode.querySelector("span").innerHTML;
-    
+    console.log(nomeParticipante)
 
     const checkVisibilidade = document.querySelector(".visibilidade .iconeMarcado");
     const tipoVisibilidade = checkVisibilidade.parentNode.querySelector("span").innerHTML;
@@ -194,12 +195,12 @@ inputEntrada.addEventListener("keypress",function(event){
 //Configurando o menu lateral
 function abrirMenuLateral(){
     //quando eu abrir o menu lateral vou procurar qm ta on
-    document.querySelector(".participantes").innerHTML = "";
+    //document.querySelector(".participantes").innerHTML = "";
 
-    procuraParticipantes();
+    //procuraParticipantes();
 
-    let a = document.getElementById("divMenuLateral").style.display;
-    if(a==="none"){
+    let alteraDisplay = document.getElementById("divMenuLateral").style.display;
+    if(alteraDisplay === "none"){
         document.getElementById("divMenuLateral").style.display = "flex";
     } else {
         document.getElementById("divMenuLateral").style.display = "none";
@@ -212,7 +213,7 @@ function voltarChat(){
 
 // Functions popular meu menu com os participantes
 function procuraParticipantes(){
-    document.querySelector(".participantes").innerHTML = "";
+    //document.querySelector(".participantes").innerHTML = "";
     const requisicaoParticipantes = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants");
     requisicaoParticipantes.then(popularParticipantes);
 }
