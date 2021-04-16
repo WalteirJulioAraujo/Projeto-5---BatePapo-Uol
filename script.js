@@ -49,7 +49,6 @@ function enviarNome(nomeChat) {
 //Trato as minhas respostas do servidor
 
 function exitoLogar(resposta) {
-    alert("conseguiu entrar");
     colocaChatTela();
     pegaMensagensServidor();
     setInterval(manterConexao,5000);
